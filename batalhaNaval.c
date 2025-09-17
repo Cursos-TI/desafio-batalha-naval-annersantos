@@ -1,40 +1,45 @@
 #include <stdio.h>
 
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
+#define N 5
+
+void imprimirMatriz(int m[N][N]) {
+    for(int i=0; i<N; i++) {
+        for(int j=0; j<N; j++) {
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
 
 int main() {
-    // Nível Novato - Posicionamento dos Navios
-    // Sugestão: Declare uma matriz bidimensional para representar o tabuleiro (Ex: int tabuleiro[5][5];).
-    // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
-    // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
+    int cone[N][N] = {0};
+    int cruz[N][N] = {0};
+    int octaedro[N][N] = {0};
 
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
+    // Cone
+    cone[0][2] = 1;
+    cone[1][1] = cone[1][2] = cone[1][3] = 1;
+    for(int j=0; j<N; j++) cone[2][j] = 1;
 
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
+    // Cruz
+    for(int i=0; i<N; i++) cruz[i][2] = 1;
+    for(int j=0; j<N; j++) cruz[2][j] = 1;
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+    // Octaedro
+    octaedro[0][2] = 1;
+    octaedro[1][1] = octaedro[1][2] = octaedro[1][3] = 1;
+    octaedro[2][2] = 1;
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    // Exibir matrizes
+    printf("Habilidade Cone:\n");
+    imprimirMatriz(cone);
+
+    printf("Habilidade Cruz:\n");
+    imprimirMatriz(cruz);
+
+    printf("Habilidade Octaedro:\n");
+    imprimirMatriz(octaedro);
 
     return 0;
 }
